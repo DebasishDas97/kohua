@@ -16,7 +16,7 @@ export default function FeaturedProducts({
         <h1 className="flex-[2] capitalize font-bold text-4xl">
           {heading} products
         </h1>
-        <p className="flex-[3] text-gray-400 text-lg md:text-left text-center">
+        <p className="flex-[3] text-gray-500 text-lg md:text-left text-center">
           {desc}
         </p>
       </div>

@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <section className="bg-white my-24">
         <h2 className="mb-4 text-5xl tracking-wide font-bold text-center text-gray-900 dark:text-black">Contact Us</h2>
-        <p className="mb-8 lg:mb-16 font-light text-center text-gray-500  sm:text-xl px-4">Got a technical issue? Want to send feedback about a feature? Need details about a product? Let us know.</p>
+        <p className="mb-8 lg:mb-16 font-light text-center text-gray-700  sm:text-xl px-4">Got a technical issue? Want to send feedback about a feature? Need details about a product? Let us know.</p>
         <div className="flex md:flex-row md:gap-0 gap-20 flex-col justify-around md:mx-[100px] mx-0">
         <div className="px-4 md:w-1/2 w-full">
         <form action="#" className="space-y-8">
@@ -26,7 +26,7 @@ export default function Contact() {
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28544.803755421864!2d92.94287807520494!3d26.581151097703074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3744e52f5c725bbb%3A0x9439136c44f1004!2sKaliabor%20Tiniali!5e0!3m2!1sen!2sin!4v1695753797472!5m2!1sen!2sin"
     width="600"
     height="450"
-    className="md:p-0 px-[21%]"
+    className="md:p-0 px-3 md:w-[500px] w-full h-[450px]"
     style={{ border: '0' }} // Provide style as an object
     allowFullScreen={true} // Allow
     loading="lazy"

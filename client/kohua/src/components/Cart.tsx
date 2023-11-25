@@ -4,6 +4,7 @@ import { removeItem, resetCart } from "../redux/cartReducer";
 import { RootState } from "../types/type";
 import {loadStripe} from '@stripe/stripe-js'
 import { makeRequest } from "../makeRequest";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -35,8 +36,8 @@ export default function Cart() {
 
   return (
     <div className="relative">
-      <div className="absolute z-[1] max-h-[300px] right-1 bg-white border-2 border-neutral-100 md:w-4/12 w-4/5 p-3 overflow-y-auto top-[-56px]">
-        <h2 className="text-xl font-semibold mb-2 text-center">
+      <div className="absolute z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[8px]">
+        <h2 className="text-2xl font-semibold my-2 text-center">
           Products in your Cart 🛒
         </h2>
         {products?.map((item) => (
@@ -44,16 +45,18 @@ export default function Cart() {
             key={crypto.randomUUID()}
             className="flex items-center mt-6 cursor-pointer"
           >
+            <Link className="w-28 h-28" to={`product/${item.id}`}>
             <img
-              className="w-28 h-28 object-cover"
+              className="w-full h-full object-cover"
               src={import.meta.env.VITE_UPLOAD_URL + item.img}
               alt="cart-image"
             />
-            <div className="flex justify-around pl-5">
+            </Link>
+            <div className="flex flex-1 justify-around pl-5">
               <div>
-                <h3>{item.title}</h3>
+                <h3 className="text-xl">{item.title}</h3>
                 <p className="w-11/12 text-sm mb-2">
-                  {item.desc.substring(0, 100)+"..."}
+                  {item.desc.substring(0, 60)+"..."}
                 </p>
                 <div className="text-blue-500">
                   {item.quantity} x {item.price}
@@ -62,7 +65,7 @@ export default function Cart() {
 
               <AiOutlineDelete
                 onClick={() => dispatch(removeItem(item.id))}
-                className="text-red-600 font-bold text-3xl"
+                className="text-red-600 font-bold text-4xl"
               />
             </div>
           </div>
