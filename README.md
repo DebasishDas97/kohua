@@ -5,3 +5,5 @@
 4. also give a overall review on everything.
 5. I have a subscribe input in my footer how to make it work?
 6. and also i have a contact form how do i make it work should i use emailjs? or it can be done using strapi itself.
+7. i want to add a deliver fee of 40rs at the time payment too.
+8. how do i make a page for the user where they can see all their orders.
