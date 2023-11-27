@@ -13,7 +13,6 @@ export default function Product() {
   const dispatch = useDispatch()
 
   const { state } = useFetch(`/products/${id}?populate=*`);
-console.log(state);
 
   return (
     <div className="md:mx-16 mb-8 mt-32 flex gap-12 md:flex-row flex-col mx-1">

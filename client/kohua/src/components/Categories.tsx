@@ -12,7 +12,6 @@ export default function Categories() {
     const secondData = Array.isArray(state?.data) ? state?.data[2] : state?.data;
     const thirdData = Array.isArray(state?.data) ? state?.data[3] : state?.data;
     const zeroData = Array.isArray(state?.data) ? state?.data[0] : state?.data;
-console.log(state);
 
   return (
     <section className="flex gap-3 m-3 lg:mx-[200px] md:mx-[50px] mx-[11px] mb-[140px] flex-wrap md:flex-nowrap md:h-[80vh] h-auto">

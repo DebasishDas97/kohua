@@ -36,7 +36,7 @@ export default function Cart() {
 
   return (
     <div className="relative">
-      <div className="absolute z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[8px]">
+      <div className="absolute z-[1] max-h-[350px] right-1 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[-25px]">
         <h2 className="text-2xl font-semibold my-2 text-center">
           Products in your Cart 🛒
         </h2>
@@ -65,7 +65,7 @@ export default function Cart() {
 
               <AiOutlineDelete
                 onClick={() => dispatch(removeItem(item.id))}
-                className="text-red-600 font-bold text-4xl"
+                className="text-red-600 font-bold text-2xl"
               />
             </div>
           </div>
