@@ -11,6 +11,7 @@ export default function Categories() {
     const firstData = Array.isArray(state?.data) ? state?.data[1] : state?.data;
     const secondData = Array.isArray(state?.data) ? state?.data[2] : state?.data;
     const thirdData = Array.isArray(state?.data) ? state?.data[3] : state?.data;
+    const fourthData = Array.isArray(state?.data) ? state?.data[4] : state?.data;
     const zeroData = Array.isArray(state?.data) ? state?.data[0] : state?.data;
 
   return (
@@ -26,13 +27,15 @@ export default function Categories() {
           </Link>
         </div>
         <div className={row}>
-          <img
-            className="object-cover w-full h-full"
-            src={import.meta.env.VITE_UPLOAD_URL + thirdData?.attributes?.img?.data?.attributes?.url}
-          />
-          <Link className={button} to={`/products/${thirdData?.id}`}>
-          {thirdData?.attributes?.title}
-          </Link>
+        <img
+                className="object-cover w-full h-full"
+                src={import.meta.env.VITE_UPLOAD_URL + zeroData?.attributes?.img?.data?.attributes?.url}
+                alt="premium-tea-category-img"
+              />
+               <Link className={button} to={`/products/${zeroData?.id}`}>
+              {zeroData?.attributes?.title}
+              </Link>
+
         </div>
       </div>
 
@@ -40,21 +43,20 @@ export default function Categories() {
         <div className={row}>
           <div className={column}>
             <div className={row}>
-              <img
-                className="object-cover w-full h-full"
-                src="https://png.pngtree.com/thumb_back/fw800/background/20220813/pngtree-a-blend-of-a-premium-tea-leaves-tea-green-tea-gourmet-photo-image_1224109.jpg"
-                alt="premium-tea-category-img"
-              />
-              <Link className={button} to={`/products/${zeroData?.id}`}>
-              {zeroData?.attributes?.title}
-              </Link>
+            <img
+            className="object-cover w-full h-full"
+            src={import.meta.env.VITE_UPLOAD_URL + thirdData?.attributes?.img?.data?.attributes?.url}
+          />
+          <Link className={button} to={`/products/${thirdData?.id}`}>
+          {thirdData?.attributes?.title}
+          </Link>
             </div>
           </div>
           <div className={column}>
             <div className={row}>
               <img
                 className="object-cover w-full h-full"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjAbhXjE9VzxrgA0ceW4IHt5jSB5zt7SIQteaDfviXo0XHqbxxiOY3qWnmEnXt39EdCpE&usqp=CAU"
+                src={import.meta.env.VITE_UPLOAD_URL + secondData?.attributes?.img?.data?.attributes?.url}
                 alt="special-tea-category-img"
               />
               <Link className={button} to={`/products/${secondData?.id}`}>
@@ -66,11 +68,11 @@ export default function Categories() {
         <div className={row}>
           <img
             className="object-cover w-full h-full"
-            src="https://image.slidesdocs.com/responsive-images/background/summer-afternoon-tea-beginning-of-autumn-drink-teapot-powerpoint-background_acccf72917__960_540.jpg"
+            src={import.meta.env.VITE_UPLOAD_URL + fourthData?.attributes?.img?.data?.attributes?.url}
             alt="offers-tea-category-img"
           />
-          <Link className={button} to="/products/1">
-            Offers
+          <Link className={button} to={`/products/${fourthData?.id}`}>
+          {fourthData?.attributes?.title}
           </Link>
         </div>
       </div>

@@ -18,6 +18,25 @@ export default function Cart() {
 
   const stripePromise = loadStripe('pk_test_51OG1RdSG4zNvOyei2DEjY3JC89EGeiuoueAT0g8xdMEvdWIfFtijql6h3EAkgsBdVk0KKZiSL6Pe3auMOtQzCqb300VaSrPvI7');
 
+  document.addEventListener('DOMContentLoaded', function () {
+    // Check if the payment was successful
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentSuccess = urlParams.get('payment_success');
+
+    if (paymentSuccess === 'true') {
+        // Display the thank you popup
+        const popup = document.createElement('div');
+        popup.innerHTML = '<div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); z-index: 999;">Thank you! Your order will reach you soon.</div>';
+        document.body.appendChild(popup);
+
+        // Close the popup and redirect after 3 seconds
+        setTimeout(function () {
+            document.body.removeChild(popup);
+            window.location.href = "/"; // Replace "/" with the URL of your homepage
+        }, 3000);
+    }
+});
+
   const handlePayment = async() => {
     try {
       const stripe = await stripePromise;
@@ -29,14 +48,14 @@ export default function Cart() {
         sessionId:res.data.stripeSession.id,
       })
     } catch (err) {
-      console.log(err);
+      alert("Something went wrong! Try again later or Contact us.");
 
     }
   }
 
   return (
     <div className="relative">
-      <div className="absolute z-[1] max-h-[350px] right-1 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[-25px]">
+      <div className="absolute z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[8px]">
         <h2 className="text-2xl font-semibold my-2 text-center">
           Products in your Cart 🛒
         </h2>

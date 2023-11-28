@@ -18,6 +18,7 @@ import ScrollToTop from "./components/ScrolltoTop";
 import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
 import Cancellation from "./pages/Cancellation/Cancellation";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 const Layout = () => {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="cancellation" element={<Cancellation />} />
+            <Route path="success-page" element={<SuccessPage />} />
             <Route
               path="terms-of-service"
               element={<TermsOfService />}
