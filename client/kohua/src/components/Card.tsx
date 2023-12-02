@@ -30,15 +30,15 @@ export default function Card({ items, index }: CardComponentProps) {
   return (
     <div
       ref={productImgRef}
-      className={`flex w-full md:w-[250px] flex-col gap-2 mb-12 -translate-x-[100%] opacity-0 blur-sm transition-all duration-700 ease ${delay}ms`}
+      className={`flex w-full flex-col gap-2 mb-12 -translate-x-[100%] opacity-0 blur-sm transition-all duration-700 ease ${delay}ms`}
     >
-      <div className="md:w-full h-[250px] overflow-hidden relative group">
+      <div className="md:w-full w-[200px] h-[200px] overflow-hidden relative group">
         {items?.attributes?.isNew && (
           <span className="absolute left-1 top-1 bg-white text-teal-600 p-1 z-20 text-sm font-semibold">
             New Season
           </span>
         )}
-        <Link to={`product/${items.id}`}>
+        <Link to={`/product/${items.id}`}>
           <img
           loading="lazy"
             className="w-full h-full object-cover absolute z-10 transition-all duration-500 ease-in-out transform group-hover:scale-105"

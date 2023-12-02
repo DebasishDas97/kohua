@@ -6,7 +6,7 @@ interface FeaturedProductsProps {
 interface CardProps {
   id: number;
   attributes: {
-    categories: {data :[{id: number; attributes: {title: string;}}]}
+    categories: { data: [{ id: number; attributes: { title: string } }] };
     desc: string;
     img: {
       data: {
@@ -24,11 +24,13 @@ interface CardProps {
     };
     title: string;
     isNew: boolean;
-   sub_categories: {data :[{id: number; attributes: {title: string;}}]}
+    sub_categories: { data: [{ id: number; attributes: { title: string } }] };
     price: string;
     type: string;
+    [key: string]: any; // Index signature to allow dynamic properties
   };
 }
+
 
 interface CardComponentProps {
   items: CardProps;

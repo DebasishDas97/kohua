@@ -1,5 +1,4 @@
 # kohua
-1. I have some ts errors in my pages, i think because categories component data value is array where as products are array i guess.
 2. I have my stripe code in here api/kohua/src/api/order/controllers/order.js and in cart component. please have a look if evrything is alright and iwant to add goggle pay options.
 3. also give a overall review on everything.
 4. I have a subscribe input in my footer how to make it work?

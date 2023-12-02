@@ -15,7 +15,7 @@ export default function Categories() {
     const zeroData = Array.isArray(state?.data) ? state?.data[0] : state?.data;
 
   return (
-    <section className="flex gap-3 m-3 lg:mx-[200px] md:mx-[50px] mx-[11px] mb-[140px] flex-wrap md:flex-nowrap md:h-[80vh] h-auto">
+    <section id="categories-section" className="flex gap-3 m-3 lg:mx-[200px] md:mx-[50px] mx-[11px] md:mb-[140px] mb-20 flex-wrap md:flex-nowrap md:h-[80vh] h-auto">
       <div className={column}>
         <div className={row}>
           <img

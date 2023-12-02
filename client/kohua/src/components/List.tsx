@@ -13,13 +13,14 @@ export default function List({ catId, maxPrice, subCats }: ListProps) {
 
   return (
     <div
-      className="flex flex-wrap justify-start gap-5 md:overflow-visible overflow-x-scroll hide-scrollbar"
+      className="flex justify-start gap-5 md:overflow-visible overflow-x-scroll hide-scrollbar"
     >
       {state.loading
         ? "Loading..."
-        : state.data.map((item, index) => (
-            <Card items={item} index={index} key={item.id} />
-          ))}
+        :state?.data && Array.isArray(state.data) && state.data.map((item, index) => (
+          <Card key={crypto.randomUUID()} items={item} index={index} />
+        ))
+        }
     </div>
   );
 }

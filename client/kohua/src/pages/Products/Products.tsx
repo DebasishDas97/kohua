@@ -41,13 +41,13 @@ export default function Products() {
       >
         Filter <AiOutlineFilter />
       </div>
-      <div className="md:mx-16 flex md:items-start items-center">
+      <div className="md:mx-16 md:flex block md:items-start items-center">
         {/* for mobile */}
         {showFilter && (
           <div className="h-full top-0 left-0 p-5 flex-1 md:static fixed mt-20 md:mt-0 md:bg-none bg-gray-50 z-50">
             <div className="flex flex-col gap-2 mb-8">
               <h2 className="text-2xl">Categories ✨</h2>
-              {state?.data.map((item) => {
+              {state?.data && Array.isArray(state.data) && state.data.map((item) =>{
                 return (
                   <label
                     key={item.id}
@@ -135,7 +135,7 @@ export default function Products() {
           <div className="h-full top-0 flex-1">
             <div className="flex flex-col gap-2 mb-8">
               <h2 className="text-2xl">Categories ✨</h2>
-              {state?.data.map((item) => {
+              {state?.data && Array.isArray(state.data) && state.data.map((item) =>{
                 return (
                   <label
                     key={item.id}

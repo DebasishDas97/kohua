@@ -197,3 +197,7 @@ svg.tea #steamR {
     opacity: 0;
   }
 }
+
+.thanks-confeti {
+  background: url(./assets/images/confetti.gif);
+}

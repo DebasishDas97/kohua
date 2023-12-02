@@ -3,7 +3,7 @@ export default function Cancellation() {
 
   return (
     <div className="my-24 md:mx-[100px] mx-0 md:p-8 px-3">
-      <h1 className="md:text-5xl text-4xl font-bold mb-8">Cancellation Policy</h1>
+      <h1 className="text-3xl md:text-5xl font-bold mb-8">Cancellation Policy</h1>
       <div>
         <p className="md:text-2xl text-xl mb-7">
           Welcome to Kohua! This Cancellation Policy outlines the rules and regulations regarding

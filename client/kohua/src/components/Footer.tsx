@@ -4,16 +4,16 @@ export default function Footer() {
   const date = new Date();
 
   return (
-    <footer className="text-center md:mt-0 mt-7 pb-5 relative z-10">
+    <footer className="text-center md:mt-0 mt-7 pb-5 relative z-10 px-6">
       {/* subscribe email */}
       <div className="footer-subscribe-section">
-        <h4 className="font-sans text-2xl mb-5">
+        <h4 className="font-sans md:text-2xl text-xl mb-5">
           Subscribe to us for early offers ! ✨
         </h4>
-        <div className="flex items-center justify-center mb-10 md:px-0 px-3">
+        <div className="flex items-center justify-center mb-6 md:mb-10 md:px-0 px-3">
           <form className="flex items-center justify-center mb-10 md:px-0 px-3">
             <input
-              className="border-2 border-cyan-600 w-[260px] h-10 p-1 rounded-l outline-none"
+              className="border-2 border-cyan-600 md:w-[260px] w-[230px] h-10 p-1 rounded-l outline-none"
               type="text"
               id="email"
               placeholder="Email Address 📧"

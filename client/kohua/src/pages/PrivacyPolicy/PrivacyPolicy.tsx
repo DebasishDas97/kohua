@@ -1,7 +1,7 @@
 export default function PrivacyPolicy() {
   const date = new Date();
   return <div className="my-24 md:mx-[100px] mx-0 md:p-8 px-3">
-  <h1 className="md:text-5xl text-4xl font-bold mb-8">Privacy Policy</h1>
+  <h1 className="text-3xl md:text-5xl font-bold mb-8">Privacy Policy</h1>
 
   <div>
     <p className="md:text-2xl text-xl mb-7">

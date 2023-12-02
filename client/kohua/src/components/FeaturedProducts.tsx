@@ -11,7 +11,7 @@ export default function FeaturedProducts({
   );
 
   return (
-    <section className="md:mx-[50px] lg:mx-[200px] mx-0 p-3 md:p-0 my-[100px]">
+    <section className="md:mx-[50px] lg:mx-[200px] mx-0 p-3 md:p-0 md:my-[100px] my-10">
       <div className="flex md:flex-row flex-col justify-between items-center mb-12 md:gap-0 gap-4">
         <h1 className="flex-[2] capitalize font-bold text-4xl">
           {heading} products
@@ -26,8 +26,8 @@ export default function FeaturedProducts({
         ) : state.loading ? (
           <div>Loading...</div>
         ) : (
-          state?.data?.map((item, index) => (
-            <Card key={crypto.randomUUID()} items={item} index={index} />
+          state?.data && Array.isArray(state.data) && state.data.map((item, index) => (
+            <Card key={item.id} items={item} index={index} />
           ))
         )}
       </div>

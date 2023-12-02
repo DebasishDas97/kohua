@@ -1,22 +1,22 @@
 export default function Contact() {
   return (
     <section className="bg-white my-24">
-        <h2 className="mb-4 text-5xl tracking-wide font-bold text-center text-gray-900 dark:text-black">Contact Us</h2>
+        <h2 className="mb-4 text-3xl md:text-5xl tracking-wide font-bold text-center text-gray-900 dark:text-black">Contact Us</h2>
         <p className="mb-8 lg:mb-16 font-light text-center text-gray-700  sm:text-xl px-4">Got a technical issue? Want to send feedback about a feature? Need details about a product? Let us know.</p>
         <div className="flex md:flex-row md:gap-0 gap-20 flex-col justify-around md:mx-[100px] mx-0">
         <div className="px-4 md:w-1/2 w-full">
-        <form action="#" className="space-y-8">
+        <form className="space-y-8">
             <div>
                 <label htmlFor="email" className="block mb-2 text-lg font-medium text-gray-900">Your Name</label>
-                <input name="email_contact" type="text" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-lg outline-none rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Full name here" required />
+                <input name="email_contact" type="text" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-lg outline-none rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full px-2 py-1.5" placeholder="Full name here" required />
             </div>
             <div>
                 <label htmlFor="subject" className="block mb-2 text-lg font-medium text-gray-900">Your Email</label>
-                <input name="subject_contact" type="email" id="subject" className="block p-3 w-full outline-none text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="Email address here    " required />
+                <input name="subject_contact" type="email" id="subject" className="block px-2 py-1.5 w-full outline-none text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="Email address here    " required />
             </div>
             <div className="sm:col-span-2">
                 <label htmlFor="message" className="block mb-2 text-lg font-medium text-gray-900">Your message</label>
-                <textarea name="message_contact" id="message" rows={6} className="block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg shadow-sm border outline-none border-gray-300" placeholder="Leave a message..."></textarea>
+                <textarea name="message_contact" id="message" rows={6} className="block px-2 py-1.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg shadow-sm border outline-none border-gray-300" placeholder="Leave a message..."></textarea>
             </div>
             <button type="submit" className="py-2 px-5 text-lg font-medium text-center text-white rounded-lg bg-cyan-600 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
         </form>

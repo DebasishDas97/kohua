@@ -75,7 +75,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="relative">
+    <div>
       <nav className="m-0 flex top-0 fixed z-50 justify-between items-center h-16 md:py-9 py-10 px-3 lg:px-20 md:px-10 bg-gray-50 w-full">
         <Link to="/">
           <img className="h-[60px] cursor-pointer" src={Logo} alt="logo" />

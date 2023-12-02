@@ -3,7 +3,7 @@ import AboutImg from "../../assets/images/hero-img.webp";
 export default function About() {
   return (
     <div className="my-24 md:mx-[100px] mx-0">
-      <h1 className="text-5xl font-bold text-center mb-8">About Us</h1>
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-8">About Us</h1>
       <div className="md:py-16">
         <div className="container mx-auto p-6">
           <div className="flex flex-col md:flex-row md:gap-12 gap-8">

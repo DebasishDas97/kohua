@@ -3,7 +3,7 @@ export default function TermsOfService() {
 
   return (
     <div className="my-24 md:mx-[100px] mx-0 md:p-8 px-3">
-    <h1 className="md:text-5xl text-4xl font-bold mb-8">Terms of Service</h1>
+    <h1 className="text-3xl md:text-5xl font-bold mb-8">Terms of Service</h1>
     <div>
       <p className="md:text-2xl text-xl mb-7">
         Welcome to Kohua! These terms of service ("Terms") outline the rules and regulations for the
