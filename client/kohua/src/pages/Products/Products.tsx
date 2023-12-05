@@ -12,12 +12,16 @@ export default function Products() {
   const [showFilter, setShowFilter] = useState(false);
   const media = window.matchMedia("(min-width: 280px) and (max-width: 540px)");
 
+  // This is not ideal
   let catId: number | undefined;
 
+  // You could have done this in one step
   if (id) {
     catId = parseInt(id);
   }
 
+  // The comment is not correct, `parseInt` will return you `NaN` if the id is incorrect
+  // The validation should happen correctly before you call your API
   // Now you can use "parsedId" safely without the risk of it being undefined
   const { state } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
@@ -33,6 +37,8 @@ export default function Products() {
     );
   };
 
+  // I can see a lot of repetition in your return statement
+  // Consider using a list instead
   return (
     <div className="md:mt-28 mt-24 mb-5 mx-3">
       <div
