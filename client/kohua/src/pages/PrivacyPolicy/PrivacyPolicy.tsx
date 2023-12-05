@@ -1,3 +1,6 @@
+// You can also use a array here instead of hardcoding everything
+// It would be easier to add or remove from your array
+
 export default function PrivacyPolicy() {
   const date = new Date();
   return <div className="my-24 md:mx-[100px] mx-0 md:p-8 px-3">
