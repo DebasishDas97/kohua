@@ -16,8 +16,12 @@ export default function Cart() {
     return total;
   };
 
+  // I do not believe that the stripe token is not a secret
+  // This should be an env variable
   const stripePromise = loadStripe('pk_test_51OG1RdSG4zNvOyei2DEjY3JC89EGeiuoueAT0g8xdMEvdWIfFtijql6h3EAkgsBdVk0KKZiSL6Pe3auMOtQzCqb300VaSrPvI7');
 
+  // This is not right, you are doing it on every render.
+  // This should be a modal without an event listener
   document.addEventListener('DOMContentLoaded', function () {
     // Check if the payment was successful
     const urlParams = new URLSearchParams(window.location.search);
@@ -62,6 +66,7 @@ export default function Cart() {
         </h2>
         {products?.map((item) => (
           <div
+            // This is wrong, you only silence the console warning regarding the `key` attribute
             key={crypto.randomUUID()}
             className="flex items-center mt-6 cursor-pointer"
           >
@@ -97,6 +102,7 @@ export default function Cart() {
             <span>Rs. {totalPrice()}</span>
           </div>
           <div className="flex items-center justify-between">
+            {/* I would rather use a form so the button can interacted by pressing enter */}
             <button onClick={handlePayment} className="bg-[#00A86B] text-white px-3 py-2">
               Proceed To Checkout
             </button>
