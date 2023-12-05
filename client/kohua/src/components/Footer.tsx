@@ -36,8 +36,11 @@ export default function Footer() {
           Our love for tea is deeply ingrained in our heritage, and it's this profound connection that fuels our commitment to delivering the finest Assam tea to your cup.
           </p>
         </div>
+
+        {/* Wrap these into a nav element if you want to follow html semantics */}
         <div>
           <h3 className="text-2xl font-semibold mb-2">Categories</h3>
+          {/* You could make this as a list then iterate over it and render the elements */}
           <ul className="text-lg">
             <li>
               <NavLink to="/">Green Tea</NavLink>
