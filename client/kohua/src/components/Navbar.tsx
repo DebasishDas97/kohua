@@ -17,6 +17,9 @@ export default function Navbar() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const products = useSelector((state: RootState) => state.cart.products);
 
+  // Is this really necessary?
+  // You also duplicate the code, you can move `setShowMenu(false);`
+  // into the first `useEffect`
   useEffect(() => {
     const handleOutsideClick = () => {
       setIsCategoryOpen(false);
@@ -55,7 +58,11 @@ export default function Navbar() {
     };
   }, [showMenu]);
 
+  // You would be better of with a reducer here
+  // as you have states which by the look of it
+  // depend on each other
   const handleMenuIconClick = (event: React.MouseEvent) => {
+    // This is really hacky
     event.stopPropagation(); // Stop event propagation
     setShowMenu(!showMenu); // Toggle showMenu state
     setOpenCart(false);
@@ -74,6 +81,9 @@ export default function Navbar() {
     setShowMenu(false);
   };
 
+  // The component is very big and you have a lot of lists here
+  // You could consider splitting the code into multiple components
+  // and use lists instead of hardcoded elements for your navigation
   return (
     <div>
       <nav className="m-0 flex top-0 fixed z-50 justify-between items-center h-16 md:py-9 py-10 px-3 lg:px-20 md:px-10 bg-gray-50 w-full">
