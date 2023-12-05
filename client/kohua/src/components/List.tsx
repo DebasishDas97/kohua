@@ -18,6 +18,7 @@ export default function List({ catId, maxPrice, subCats }: ListProps) {
       {state.loading
         ? "Loading..."
         :state?.data && Array.isArray(state.data) && state.data.map((item, index) => (
+          // This is wrong again
           <Card key={crypto.randomUUID()} items={item} index={index} />
         ))
         }
