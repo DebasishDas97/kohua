@@ -1,3 +1,5 @@
+// Same here, just use an array
+
 export default function Cancellation() {
   const date = new Date();
 
