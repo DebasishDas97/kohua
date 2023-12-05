@@ -1,3 +1,13 @@
+// It doesn't make sense to share component props
+// as they are usually coupled to the component itself.
+//
+// The reducer action types could also just stay next to the reducer
+//
+// The global "types" or "models" folder is usually used for models
+// which can be shared across the application, these types are unlikely
+// to be used anywhere else but a single spot.
+// Export them could also create a lot of noise when you try to use autocomplete
+
 interface FeaturedProductsProps {
   heading: string;
   desc: string;
@@ -30,7 +40,6 @@ interface CardProps {
     [key: string]: any; // Index signature to allow dynamic properties
   };
 }
-
 
 interface CardComponentProps {
   items: CardProps;
@@ -88,5 +97,5 @@ export type {
   UseFetchReturnType,
   CardComponentProps,
   CartState,
-  RootState
+  RootState,
 };
