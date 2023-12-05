@@ -10,6 +10,30 @@ export default function FeaturedProducts({
     `/products?populate=*&[filters][type][$eq]=${heading}`
   );
 
+  /** The code can be made cleaner if you would have a `Layout` element which
+  * includes the shared layout then do early return statement with the
+  * correct children defined in the `Layout`
+  * eg.:
+  *
+  *  const Layout = ({ children }: PropsWithChildren) => (
+  *    <div>
+  *      // Whatever the layout is, include props if needed //
+  *      {children}
+  *    </div>
+  *  )
+  *
+  *
+  *  if (state.error) {
+  *     return (
+  *       <Layout>
+  *         <div className="text-red-600 text-2xl">Something went wrong!</div>
+  *       </Layout>
+  *     )
+  *  }
+  *
+  * etc...
+  */
+
   return (
     <section className="md:mx-[50px] lg:mx-[200px] mx-0 p-3 md:p-0 md:my-[100px] my-10">
       <div className="flex md:flex-row flex-col justify-between items-center mb-12 md:gap-0 gap-4">
