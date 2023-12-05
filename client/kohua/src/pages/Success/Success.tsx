@@ -2,6 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Success() {
   const navigate = useNavigate();
+
+  // That's very odd as well
+  // You navigate first then you try to grab an element which
+  // supposedly in the page you navigate to?
+  // This should be handled on the page where you are navigating to
+  // not using this hacky timeout
+  // Use a query param when you navigate to the other page and 
+  // act based on the query param
   const navigateToContact = () => {
   navigate("/");
   setTimeout(() => {
