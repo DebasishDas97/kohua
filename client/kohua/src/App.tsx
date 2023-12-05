@@ -42,6 +42,7 @@ function App() {
   }, []);
 
   return (
+    // I would recommend you to use the new react-router API instead of the old one.
     <Router>
       <ScrollToTop />
       {isLoading ? (
@@ -56,10 +57,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="cancellation" element={<Cancellation />} />
             <Route path="success" element={<Success />} />
-            <Route
-              path="terms-of-service"
-              element={<TermsOfService />}
-            />
+            <Route path="terms-of-service" element={<TermsOfService />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
