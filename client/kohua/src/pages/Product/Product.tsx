@@ -14,8 +14,13 @@ export default function Product() {
   const { state } = useFetch(`/products/${id}?populate=*`);
   const isArray = Array.isArray(state?.data);
 
+  // Oh no no no, don't do this!
   let product: any;
 
+  // You should use a shared component or 2 different components
+  // To accommodate both scenarios
+  // I would also use `TypeGuard` to determine what component
+  // should be used
   if (isArray) {
     if (Array.isArray(state?.data) && state.data.length > 0) {
       product = state.data[0];
