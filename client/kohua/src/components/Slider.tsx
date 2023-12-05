@@ -13,6 +13,8 @@ const data = [
 export default function Slider() {
   const [sliderVal, setSliderVal] = useState(0);
   const [isArrowClicked, setisArrowClicked] = useState(false);
+  // the interval will be redefined on every render,
+  // this should be outside of the component or a reference
   let interval: number;
 
   const prevSlideImage = () => {
@@ -25,6 +27,8 @@ export default function Slider() {
     setisArrowClicked(true);
   };
 
+  // Don't use useEffect for this, this is unnecessary
+  // Do the job inside your click handlers
   useEffect(() => {
     if (!isArrowClicked) {
       interval = setInterval(() => {
