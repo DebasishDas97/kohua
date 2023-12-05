@@ -2,6 +2,15 @@ import { Link } from "react-router-dom";
 import { CardComponentProps } from "../types/type";
 import { useEffect, useRef } from "react";
 
+// I would create some utils to grab the env values like this: import.meta.env.VITE_UPLOAD_URL
+// If the env is not define it should throw an early error and crash the application,
+// otherwise you can deploy something that is broken under the hood and will crash on
+// random interactions which can be annoying to the user and hard to debug
+//
+// 1. Create a function that grabs an env value based on a string
+// 2. Create constant env variable using this method
+// * You can be creative and use an array or object to do this then export each values, doesn't matter
+
 export default function Card({ items, index }: CardComponentProps) {
   const productImgRef = useRef<HTMLDivElement | null>(null);
   const delay = 150 + index * 50;
@@ -40,7 +49,7 @@ export default function Card({ items, index }: CardComponentProps) {
         )}
         <Link to={`/product/${items.id}`}>
           <img
-          loading="lazy"
+            loading="lazy"
             className="w-full h-full object-cover absolute z-10 transition-all duration-500 ease-in-out transform group-hover:scale-105"
             src={
               import.meta.env.VITE_UPLOAD_URL +
