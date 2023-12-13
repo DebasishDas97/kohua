@@ -56,7 +56,7 @@ export default function Cart() {
 
   return (
 
-      <div className="absolute z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[72px]">
+      <div className="fixed z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[72px]">
         <h2 className="text-2xl font-semibold my-2 text-center">
           Products in your Cart 🛒
         </h2>
