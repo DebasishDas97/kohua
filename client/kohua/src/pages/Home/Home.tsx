@@ -1,11 +1,8 @@
 import Categories from "../../components/Categories";
 import FeaturedProducts from "../../components/FeaturedProducts";
 import Slider from "../../components/Slider";
-import useFetch from "../../hooks/useFetch";
 
 export default function Home() {
-;
-
   return (
     <>
       <Slider />

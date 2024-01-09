@@ -6,13 +6,13 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
-import Product from "./pages/Product/Product";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
+import Product from "./pages/Product/Product";
 import ErrorPage from "./pages/ErrorPage";
 import ScrollToTop from "./components/ScrolltoTop";
 import Loader from "./components/Loader";

@@ -16,7 +16,7 @@ export default function Cart() {
     return total;
   };
 
-  const stripePromise = loadStripe('pk_test_51OG1RdSG4zNvOyei2DEjY3JC89EGeiuoueAT0g8xdMEvdWIfFtijql6h3EAkgsBdVk0KKZiSL6Pe3auMOtQzCqb300VaSrPvI7');
+  const stripePromise = loadStripe('pk_live_51OG1RdSG4zNvOyeibTOWOJJGcxEGU4BMrnhXvIyuLpduRZSRjXZSyL9t4k52SbVUhQadcO6E1NZ581r2gtWenCg7006v3U7yXa');
 
   document.addEventListener('DOMContentLoaded', function () {
     // Check if the payment was successful
@@ -97,7 +97,7 @@ export default function Cart() {
             <span>Rs. {totalPrice()}</span>
           </div>
           <div className="flex items-center justify-between">
-            <button onClick={handlePayment} className="bg-[#00A86B] text-white px-3 py-2">
+            <button disabled={products?.length === 0} onClick={handlePayment} className="bg-[#00A86B] text-white px-3 py-2">
               Proceed To Checkout
             </button>
             <span

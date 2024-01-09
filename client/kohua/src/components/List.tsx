@@ -13,7 +13,7 @@ export default function List({ catId, maxPrice, subCats }: ListProps) {
 
   return (
     <div
-      className="flex justify-start gap-5 md:overflow-visible overflow-x-scroll hide-scrollbar"
+      className="flex flex-wrap justify-start gap-5"
     >
       {state.loading
         ? "Loading..."

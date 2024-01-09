@@ -23,7 +23,6 @@ export default function Products() {
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
     setSelectedSubCats(
@@ -47,24 +46,26 @@ export default function Products() {
           <div className="h-full top-0 left-0 p-5 flex-1 md:static fixed mt-20 md:mt-0 md:bg-none bg-gray-50 z-50">
             <div className="flex flex-col gap-2 mb-8">
               <h2 className="text-2xl">Categories ✨</h2>
-              {state?.data && Array.isArray(state.data) && state.data.map((item) =>{
-                return (
-                  <label
-                    key={item.id}
-                    className="text-lg cursor-pointer"
-                    htmlFor={item.id.toString()}
-                  >
-                    <input
-                      className="cursor-pointer capitalize"
-                      type="checkbox"
-                      value={item.id}
-                      onChange={handleChange}
-                      id={item.id.toString()}
-                    />
-                    &nbsp;{item.attributes.title}
-                  </label>
-                );
-              })}
+              {state?.data &&
+                Array.isArray(state.data) &&
+                state.data.map((item) => {
+                  return (
+                    <label
+                      key={item.id}
+                      className="text-lg cursor-pointer"
+                      htmlFor={item.id.toString()}
+                    >
+                      <input
+                        className="cursor-pointer capitalize"
+                        type="checkbox"
+                        value={item.id}
+                        onChange={handleChange}
+                        id={item.id.toString()}
+                      />
+                      &nbsp;{item.attributes.title}
+                    </label>
+                  );
+                })}
             </div>
             <div>
               <h2 className="text-2xl">Filter By Price 🏷️</h2>
@@ -126,7 +127,6 @@ export default function Products() {
                 </label>
               </div>
             </div>
-
           </div>
         )}
 
@@ -135,25 +135,26 @@ export default function Products() {
           <div className="h-full top-0 flex-1">
             <div className="flex flex-col gap-2 mb-8">
               <h2 className="text-2xl">Categories ✨</h2>
-              {state?.data && Array.isArray(state.data) && state.data.map((item) =>{
-                return (
-                  <label
-                    key={item.id}
-                    className="text-lg cursor-pointer"
-                    htmlFor={item.id.toString()}
-                  >
-                    <input
-                      className="cursor-pointer capitalize"
-                      type="checkbox"
-
-                      value={item.id}
-                      onChange={handleChange}
-                      id={item.id.toString()}
-                    />
-                    &nbsp;{item.attributes.title}
-                  </label>
-                );
-              })}
+              {state?.data &&
+                Array.isArray(state.data) &&
+                state.data.map((item) => {
+                  return (
+                    <label
+                      key={item.id}
+                      className="text-lg cursor-pointer"
+                      htmlFor={item.id.toString()}
+                    >
+                      <input
+                        className="cursor-pointer capitalize"
+                        type="checkbox"
+                        value={item.id}
+                        onChange={handleChange}
+                        id={item.id.toString()}
+                      />
+                      &nbsp;{item.attributes.title}
+                    </label>
+                  );
+                })}
             </div>
             <div>
               <h2 className="text-2xl">Filter By Price 🏷️</h2>
@@ -169,7 +170,7 @@ export default function Products() {
                     value="500"
                     onChange={(e) => setMaxPrice(+e.target.value)}
                   />
-                 &#8804;500
+                  &#8804;500
                 </label>
 
                 <label
@@ -215,7 +216,6 @@ export default function Products() {
                 </label>
               </div>
             </div>
-
           </div>
         )}
 
@@ -225,11 +225,7 @@ export default function Products() {
             src={Store}
             alt="products"
           />
-          <List
-            catId={catId}
-            maxPrice={maxPrice}
-            subCats={selectedSubCats}
-          />
+          <List catId={catId} maxPrice={maxPrice} subCats={selectedSubCats} />
         </div>
       </div>
     </div>

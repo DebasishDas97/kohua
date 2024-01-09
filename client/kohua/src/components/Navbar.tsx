@@ -113,7 +113,7 @@ export default function Navbar() {
 
           <div onClick={handleOpenCart} className="flex relative">
             <AiOutlineShoppingCart className="cursor-pointer" />
-            <span className="absolute bg-blue-400 rounded-full w-5 h-5 text-center text-sm -top-3 -right-3">
+            <span className="absolute text-white bg-blue-400 rounded-full w-5 h-5 text-center text-sm -top-3 -right-3">
               {products.length}
             </span>
           </div>
@@ -122,18 +122,19 @@ export default function Navbar() {
         {/* Menu Icon */}
         {!showMenu ? (
           <>
-            {/* <div className="relative md:hidden block">
-              <input
-                placeholder="Search Products"
-                className="border border-gray-700 px-3 py-[3px] outline-none"
-                type="search"
+            <div className="flex items-center gap-6 md:hidden">
+              <div onClick={handleOpenCart} className="flex relative">
+                <AiOutlineShoppingCart className="cursor-pointer text-3xl" />
+                <span className="absolute text-white bg-blue-400 rounded-full w-[1.35em] h-[1.35em] text-center -top-3 -right-4">
+                  {products.length}
+                </span>
+              </div>
+
+              <BiStore
+                className="cursor-pointer block text-4xl"
+                onClick={handleMenuIconClick}
               />
-              <BiSearch className="absolute top-1 right-1 cursor-pointer text-2xl" />
-            </div> */}
-            <BiStore
-              className="cursor-pointer md:hidden block text-4xl"
-              onClick={handleMenuIconClick}
-            />
+            </div>
           </>
         ) : (
           <IoMdClose
@@ -149,17 +150,6 @@ export default function Navbar() {
             showMenu ? "translate-x-[0px]" : "translate-x-[300px]"
           } transition ease-in-out duration-500 z-10 rounded-sm absolute right-0 top-[60px] flex flex-col gap-7 p-5 bg-gray-50 w-[250px]`}
         >
-          <div className="flex justify-around gap-7 p-4 rounded-md items-center bg-gray-100">
-            {/* <BsPerson className="cursor-pointer text-2xl" /> */}
-
-            <div onClick={handleOpenCart} className="flex relative">
-              See Cart Items&nbsp;
-              <AiOutlineShoppingCart className="cursor-pointer text-xl" />
-              <span className="absolute bg-blue-400 rounded-full w-5 h-5 text-center -top-3 -right-3">
-                {products.length}
-              </span>
-            </div>
-          </div>
           <Link to="/" className="cursor-pointer text-xl menu-item">
             Homepage 🏡
           </Link>

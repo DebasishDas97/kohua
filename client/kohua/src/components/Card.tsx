@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CardComponentProps } from "../types/type";
 import { useEffect, useRef } from "react";
 
 export default function Card({ items, index }: CardComponentProps) {
   const productImgRef = useRef<HTMLDivElement | null>(null);
   const delay = 150 + index * 50;
+const location = useLocation()
+const isProductPage = location.pathname.includes('/products/');
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -30,9 +32,9 @@ export default function Card({ items, index }: CardComponentProps) {
   return (
     <div
       ref={productImgRef}
-      className={`flex flex-col gap-2 mb-12 -translate-x-[100%] opacity-0 blur-sm transition-all duration-700 ease ${delay}ms`}
+      className={`${isProductPage ? "md:w-[200px] w-full" : "w-[200px]"} flex flex-col gap-2 mb-12 -translate-x-[100%] opacity-0 blur-sm transition-all duration-700 ease ${delay}ms`}
     >
-      <div className="w-[200px] h-[200px] overflow-hidden relative group">
+      <div className={`${isProductPage ? "md:w-[200px] w-full" : "w-[200px]"} h-[200px] overflow-hidden relative group`}>
         {items?.attributes?.isNew && (
           <span className="absolute left-1 top-1 bg-white text-teal-600 p-1 z-20 text-sm font-semibold">
             New Season
