@@ -19,13 +19,34 @@ import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
 import Cancellation from "./pages/Cancellation/Cancellation";
 import Success from "./pages/Success/Success";
+import ToTopBtn from "./components/ToTopBtn";
+import { Helmet } from "react-helmet-async";
 
 const Layout = () => {
   return (
     <>
       <div className="app">
+      <Helmet>
+          <title>Kohua</title>
+          <link rel="canonical" href="https://kohua.in/" />
+          <meta
+            name="description"
+            content="Elevate your tea experience with our handcrafted, high-quality leaves sourced from Assam renowned tea gardens. Sip, savor, and discover the true essence of tea with us."
+          />
+          <link
+            rel="icon"
+            type="image/x-icon"
+            href="./src/assets/images/logo.png"
+            sizes="32x32"
+          />
+          <meta
+            property="og:image"
+            content="./src/assets/images/special-cat.webp"
+          />
+        </Helmet>
         <Navbar />
         <Outlet />
+        <ToTopBtn />
         <Footer />
       </div>
     </>

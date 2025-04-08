@@ -12,8 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "formData": {
-      "type": "json"
+    "username": {
+      "type": "string"
+    },
+    "useremail": {
+      "type": "email"
+    },
+    "usermessage": {
+      "type": "text"
     }
   }
 }

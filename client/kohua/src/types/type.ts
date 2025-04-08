@@ -32,11 +32,6 @@ interface CardProps {
 }
 
 
-interface CardComponentProps {
-  items: CardProps;
-  index: number;
-}
-
 interface ListProps {
   catId: number | undefined;
   maxPrice: number;
@@ -52,11 +47,6 @@ interface State {
   data: CardProps | CardProps[] | null; // Replace 'CardProps' with the actual type for your data.
   loading: boolean;
   error: boolean;
-}
-
-interface Action {
-  type: "FETCHING" | "FETCHED" | "ERROR";
-  payload?: CardProps | CardProps[] | null; // Replace 'CardProps' with the actual type for your data.
 }
 
 interface UseFetchReturnType {
@@ -83,10 +73,8 @@ export type {
   CardProps,
   ListProps,
   AccordationProps,
-  Action,
   State,
   UseFetchReturnType,
-  CardComponentProps,
   CartState,
-  RootState
+  RootState,
 };

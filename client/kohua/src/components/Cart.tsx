@@ -2,11 +2,18 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, resetCart } from "../redux/cartReducer";
 import { RootState } from "../types/type";
-import {loadStripe} from '@stripe/stripe-js'
+import { loadStripe } from "@stripe/stripe-js";
 import { makeRequest } from "../makeRequest";
 import { Link } from "react-router-dom";
+import { getEnvVariable } from "../utils/envUtils";
+import { useEffect } from "react";
 
-export default function Cart() {
+interface CartProps {
+  openCart: boolean;
+  setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Cart({ openCart, setOpenCart }: CartProps) {
   const products = useSelector((state: RootState) => state.cart.products);
   const dispatch = useDispatch();
 
@@ -16,67 +23,85 @@ export default function Cart() {
     return total;
   };
 
-  const stripePromise = loadStripe('pk_live_51OG1RdSG4zNvOyeibTOWOJJGcxEGU4BMrnhXvIyuLpduRZSRjXZSyL9t4k52SbVUhQadcO6E1NZ581r2gtWenCg7006v3U7yXa');
+  useEffect(() => {
+    const handleOutsideClick = () => {
+      setOpenCart(false);
+    };
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Check if the payment was successful
-    const urlParams = new URLSearchParams(window.location.search);
-    const paymentSuccess = urlParams.get('payment_success');
-
-    if (paymentSuccess === 'true') {
-        // Display the thank you popup
-        const popup = document.createElement('div');
-        popup.innerHTML = '<div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); z-index: 999;">Thank you! Your order will reach you soon.</div>';
-        document.body.appendChild(popup);
-
-        // Close the popup and redirect after 3 seconds
-        setTimeout(function () {
-            document.body.removeChild(popup);
-            window.location.href = "/"; // Replace "/" with the URL of your homepage
-        }, 3000);
+    if (openCart) {
+      document.addEventListener("click", handleOutsideClick);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
     }
-});
 
-  const handlePayment = async() => {
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [openCart]);
+
+  const publishStripeKey = getEnvVariable("VITE_STRIPE_PUBLISH_KEY");
+
+  const stripePromise = loadStripe(publishStripeKey);
+
+  const handlePayment = async () => {
     try {
       const stripe = await stripePromise;
 
       const res = await makeRequest.post("/orders", {
         products,
-      })
+      });
 
       await stripe?.redirectToCheckout({
-        sessionId:res.data.stripeSession.id,
-      })
+        sessionId: res.data.stripeSession.id,
+      });
     } catch (err) {
-      alert("Something went wrong! Try again later or Contact us.");
-
+      alert(err);
     }
-  }
+  };
+
+  const uploadUrl = getEnvVariable("VITE_UPLOAD_URL");
 
   return (
-
-      <div className="fixed z-[1] max-h-[350px] right-0 bg-white border-2 border-neutral-100 md:w-4/12 w-full p-3 overflow-y-auto top-[72px]">
-        <h2 className="text-2xl font-semibold my-2 text-center">
-          Products in your Cart 🛒
+    <div>
+      <div
+        className={`fixed z-20 h-full right-0 bg-white border-2 border-neutral-100 md:w-[35%] w-full py-3 px-5 overflow-y-auto top-0 ${
+          openCart ? "active-cart" : "not-active-cart"
+        }`}
+      >
+        <h2 className="text-2xl font-semibold my-2 flex items-center justify-between">
+          Shopping Cart{" "}
+          <span className="cursor-pointer" onClick={() => setOpenCart(false)}>
+            <svg
+              className="hover:rotate-[180deg] duration-700"
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 1024 1024"
+              height="0.9em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path>
+            </svg>
+          </span>
         </h2>
-        {products?.map((item) => (
-          <div
-            key={crypto.randomUUID()}
-            className="flex items-center mt-6 cursor-pointer"
+        {products?.map((item, index) => (
+          <Link to={`product/${item.id}`}
+            key={products[index].id}
+            className="flex items-center my-8 cursor-pointer"
           >
-            <Link className="w-28 h-28" to={`product/${item.id}`}>
-            <img
-              className="w-full h-full object-cover"
-              src={import.meta.env.VITE_UPLOAD_URL + item.img}
-              alt="cart-image"
-            />
-            </Link>
+            <div className="w-28 h-28">
+              <img
+                className="w-full h-full object-cover"
+                src={uploadUrl + item.img}
+                alt="cart-image"
+              />
+            </div>
             <div className="flex flex-1 justify-around pl-5">
               <div>
                 <h3 className="text-xl">{item.title}</h3>
                 <p className="w-11/12 text-sm mb-2">
-                  {item.desc.substring(0, 60)+"..."}
+                  {item.desc.substring(0, 60) + "..."}
                 </p>
                 <div className="text-blue-500">
                   {item.quantity} x {item.price}
@@ -84,30 +109,39 @@ export default function Cart() {
               </div>
 
               <AiOutlineDelete
-                onClick={() => dispatch(removeItem(item.id))}
+                onClick={(e) => {e.stopPropagation();
+                  e.preventDefault();
+                  dispatch(removeItem(item.id))}}
                 className="text-red-600 font-bold text-2xl"
               />
             </div>
-          </div>
+          </Link>
         ))}
         <div>
-          <div
-            className="flex justify-between mt-10 mb-5">
-            <h5>SUBTOTAL</h5>
+          <div className="flex justify-between mt-10 mb-5">
+            <h5 className="tracking-wide">SUBTOTAL</h5>
             <span>Rs. {totalPrice()}</span>
           </div>
           <div className="flex items-center justify-between">
-            <button disabled={products?.length === 0} onClick={handlePayment} className="bg-[#00A86B] text-white px-3 py-2">
+            <button
+              disabled={products?.length === 0}
+              onClick={handlePayment}
+              className="border-2 border-black px-3 py-2 transition-colors duration-700 ease-in-out hover:bg-black hover:text-white"
+            >
               Proceed To Checkout
             </button>
+
             <span
-              onClick={() => dispatch(resetCart())}
-              className="font-semibold text-red-600 cursor-pointer">
+              onClick={(e) => {e.stopPropagation();
+                e.preventDefault();
+                dispatch(resetCart())}}
+              className="font-semibold text-red-600 cursor-pointer"
+            >
               Reset Cart
             </span>
           </div>
         </div>
       </div>
-
+    </div>
   );
 }

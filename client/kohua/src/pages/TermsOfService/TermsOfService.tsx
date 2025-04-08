@@ -2,7 +2,7 @@ export default function TermsOfService() {
   const date = new Date();
 
   return (
-    <div className="my-24 md:mx-[100px] mx-0 md:p-8 px-3">
+    <div className="my-24 margin-96 md:mx-[100px] mx-0 md:p-8 px-3">
       <h1 className="text-3xl md:text-5xl font-bold mb-8">Terms of Service</h1>
       <div>
         <p className="md:text-2xl text-xl mb-7">

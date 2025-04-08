@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { makeRequest } from "../../makeRequest";
+import { Helmet } from "react-helmet-async";
 const initialFormData = {
   username: "",
   useremail: "",
@@ -49,7 +50,18 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-white my-24">
+    <>
+     <Helmet>
+        <title>Contact Us - Kohua</title>
+        <meta
+          name="description"
+          content="Got a technical issue? Want to send feedback about a feature? Need
+          details about a product? Let us know."
+        />
+        <link rel="canonical" href="https://kohua.in/contact" />
+      </Helmet>
+
+    <section className="bg-white md:mx-10 xl:mx-28 margin-96 mx-[11px] my-24">
       <h2 className="mb-4 text-3xl md:text-5xl tracking-wide font-bold text-center text-gray-900 dark:text-black">
         Contact Us
       </h2>
@@ -57,7 +69,7 @@ export default function Contact() {
         Got a technical issue? Want to send feedback about a feature? Need
         details about a product? Let us know.
       </p>
-      <div className="flex md:flex-row md:gap-0 gap-20 flex-col justify-around md:mx-[100px] mx-0">
+      <div className="flex md:flex-row md:gap-0 gap-20 flex-col justify-around mx-0">
         <div className="px-4 md:w-1/2 w-full">
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
@@ -121,7 +133,7 @@ export default function Contact() {
               </div>
             )}
             <button
-              className="py-2 px-5 text-lg font-medium text-center text-white rounded-lg bg-cyan-600 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 outline-none border-none"
+              className="py-2 px-5 text-lg font-medium text-center text-white rounded-lg bg-teal-500 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 outline-none border-none"
               type="submit"
               disabled={isSubmitting}
             >
@@ -143,5 +155,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </>
   );
 }

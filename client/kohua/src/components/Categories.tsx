@@ -1,81 +1,113 @@
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import GoldTea from "../assets/images/gold-tea-cat-home.webp"
+import GreenTea from "../assets/images/green-tea-cat-home.webp"
+import PremiumTea from "../assets/images/premium-cat.webp"
+import SpecialTea from "../assets/images/special-cat.webp"
+import OfferCat from "../assets/images/offers-cat.webp"
 
 export default function Categories() {
-  const column = "flex-[1] flex flex-col gap-3";
+  const column = "flex-[1] flex md:flex-col flex-row gap-3";
   const row = "flex-[1] flex gap-3 relative overflow-hidden";
+  const row1 = "flex-[1] flex relative overflow-hidden";
   const button =
-    "min-w-[100px] uppercase cursor-pointer p-3 text-center bg-black m-auto top-0 left-0 right-0 bottom-0 w-fit h-12 text-white absolute text-lg font-medium";
+    "min-w-[100px] uppercase cursor-pointer py-1 text-center m-auto right-3 bottom-2 w-fit text-white absolute md:text-2xl text-[1rem] font-semibold flex items-center flex-col";
 
-    const { state } = useFetch(`/categories/?populate=*`);
-    const firstData = Array.isArray(state?.data) ? state?.data[1] : state?.data;
-    const secondData = Array.isArray(state?.data) ? state?.data[2] : state?.data;
-    const thirdData = Array.isArray(state?.data) ? state?.data[3] : state?.data;
-    const fourthData = Array.isArray(state?.data) ? state?.data[4] : state?.data;
-    const zeroData = Array.isArray(state?.data) ? state?.data[0] : state?.data;
+  const { state } = useFetch(`/categories/?populate=*`);
+  const firstData = Array.isArray(state?.data) ? state?.data[1] : state?.data;
+  const secondData = Array.isArray(state?.data) ? state?.data[2] : state?.data;
+  const thirdData = Array.isArray(state?.data) ? state?.data[3] : state?.data;
+  const fourthData = Array.isArray(state?.data) ? state?.data[4] : state?.data;
+  const zeroData = Array.isArray(state?.data) ? state?.data[0] : state?.data;
+
 
   return (
-    <section id="categories-section" className="flex gap-3 m-3 lg:mx-[200px] md:mx-[50px] mx-[11px] md:mb-[140px] mb-20 flex-wrap md:flex-nowrap md:h-[80vh] h-auto">
+    <>
+    <div className="max-w-2xl mx-auto mb-15 text-center">
+            <span className="inline-block py-1 px-3 mb-4 text-xs font-semibold text-teal-500 bg-teal-50 rounded-full">
+              CATEGORIES
+            </span>
+            <div className="font-heading text-5xl xs:text-6xl md:text-7xl font-bold mb-10">
+              <span>Shop By </span>
+              <span className="font-serif italic">Category</span>
+            </div>
+          </div>
+    <section
+      id="categories-section"
+      className="flex gap-3 m-3 margin-96 md:mx-10 xl:mx-28 mx-[11px] md:mb-[140px] mb-20 flex-wrap md:flex-nowrap md:h-[80vh] h-auto "
+    >
+
       <div className={column}>
-        <div className={row}>
+        <Link className={`${row1}`} to={`/products/${firstData?.id}`}>
           <img
             className="object-cover w-full h-full"
-            src={import.meta.env.VITE_UPLOAD_URL + firstData?.attributes?.img?.data?.attributes?.url}
+            src={GoldTea}
           />
-          <Link className={button} to={`/products/${firstData?.id}`}>
+           <div className="overlay"></div>
+          <div className={button}>
             {firstData?.attributes?.title}
-          </Link>
-        </div>
-        <div className={row}>
-        <img
-                className="object-cover w-full h-full"
-                src={import.meta.env.VITE_UPLOAD_URL + zeroData?.attributes?.img?.data?.attributes?.url}
-                alt="premium-tea-category-img"
-              />
-               <Link className={button} to={`/products/${zeroData?.id}`}>
-              {zeroData?.attributes?.title}
-              </Link>
+            <span className="border-b-[1px] border-[#f0f8ff] w-[70%]"></span>
+          </div>
+        </Link>
+        <Link className={`${row} gap-0`} to={`/products/${zeroData?.id}`}>
+          <img
+            className="object-cover w-full h-full"
+            src={PremiumTea}
+            alt="premium-tea-category-img"
+          />
+           <div className="overlay"></div>
+          <div className={button}>{zeroData?.attributes?.title}
+          <span className="border-b-[1px] border-[#f0f8ff] w-[70%]"></span>
 
-        </div>
+          </div>
+
+        </Link>
       </div>
 
       <div className="md:flex-[2] flex-auto flex flex-col gap-3">
         <div className={row}>
           <div className={column}>
-            <div className={row}>
-            <img
-            className="object-cover w-full h-full"
-            src={import.meta.env.VITE_UPLOAD_URL + thirdData?.attributes?.img?.data?.attributes?.url}
-          />
-          <Link className={button} to={`/products/${thirdData?.id}`}>
-          {thirdData?.attributes?.title}
-          </Link>
-            </div>
-          </div>
-          <div className={column}>
-            <div className={row}>
+            <Link to={`/products/${thirdData?.id}`} className={`${row1}`}>
               <img
                 className="object-cover w-full h-full"
-                src={import.meta.env.VITE_UPLOAD_URL + secondData?.attributes?.img?.data?.attributes?.url}
+                src={GreenTea}
+              />
+           <div className="overlay"></div>
+
+              <div className={button}>{thirdData?.attributes?.title}
+            <span className="border-b-[1px] border-[#f0f8ff] w-[70%]"></span>
+              </div>
+            </Link>
+          </div>
+          <div className={column}>
+            <Link to={`/products/${secondData?.id}`} className={`${row} gap-0`}>
+              <img
+                className="object-cover w-full h-full"
+                src={SpecialTea}
                 alt="special-tea-category-img"
               />
-              <Link className={button} to={`/products/${secondData?.id}`}>
-                {secondData?.attributes?.title}
-              </Link>
-            </div>
+           <div className="overlay"></div>
+
+              <div className={`${button} mr-0 md:mr-3`}>{secondData?.attributes?.title}
+            <span className="border-b-[1px] border-[#f0f8ff] w-[70%]"></span>
+              </div>
+            </Link>
           </div>
         </div>
-        <div className={row}>
+        <Link to={`/products/${fourthData?.id}`} className={`${row} gap-0`}>
           <img
             className="object-cover w-full h-full"
-            src={import.meta.env.VITE_UPLOAD_URL + fourthData?.attributes?.img?.data?.attributes?.url}
+            src={OfferCat}
             alt="offers-tea-category-img"
           />
-          <Link className={button} to={`/products/${fourthData?.id}`}>
-          {fourthData?.attributes?.title}
-          </Link>
-        </div>
+           <div className="overlay"></div>
+
+          <div className={`${button} mr-0 md:mr-3`}>Kohua {fourthData?.attributes?.title}
+          <span className="border-b-[1px] border-[#f0f8ff] w-[70%]"></span>
+          </div>
+        </Link>
       </div>
     </section>
+    </>
   );
 }

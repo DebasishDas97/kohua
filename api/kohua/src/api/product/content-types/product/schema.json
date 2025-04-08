@@ -66,6 +66,19 @@
         "Trending",
         "Featured"
       ]
+    },
+    "inStock": {
+      "type": "boolean",
+      "default": true
+    },
+    "old_price": {
+      "type": "decimal"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "reviews": {
+      "type": "integer"
     }
   }
 }

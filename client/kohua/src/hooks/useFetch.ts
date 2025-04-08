@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useEffect, useReducer } from "react";
-import { Action, CardProps, State, UseFetchReturnType } from "../types/type";
+import { CardProps, State, UseFetchReturnType } from "../types/type";
 import { makeRequest } from "../makeRequest";
 
 const INITIAL_STATE: State = {
@@ -8,6 +7,11 @@ const INITIAL_STATE: State = {
   loading: false,
   error: false,
 };
+
+interface Action {
+  type: "FETCHING" | "FETCHED" | "ERROR";
+  payload?: CardProps | CardProps[] | null; // Replace 'CardProps' with the actual type for your data.
+}
 
 function dataReducer(state: State, action: Action): State {
   switch (action.type) {

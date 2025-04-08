@@ -9,7 +9,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::order.order', ({ strapi }) => ({
     async create(ctx) {
-        const { products} = ctx.request.body;
+        const { products } = ctx.request.body;
 
         try {
             const deliveryFee = 40;
@@ -46,14 +46,13 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
                 cancel_url: process.env.CLIENT_URL + "?success=false",
                 line_items: lineItems,
                 shipping_address_collection: { allowed_countries: ["IN"] },
-                payment_method_types: ["card"],
                 phone_number_collection: {
                     enabled: true,
-                  },
+                },
             });
 
             await strapi.service("api::order.order").create({
-                data: { products, stripeid: session.id},
+                data: { products, stripeid: session.id },
             });
 
             return { stripeSession: session };
